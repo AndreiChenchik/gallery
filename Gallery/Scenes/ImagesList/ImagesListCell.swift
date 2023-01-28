@@ -8,13 +8,13 @@ protocol imagesListCellDelegate: AnyObject {
 
 final class ImagesListCell: UITableViewCell {
     
+    
     static let reuseIdentifier = "ImagesListCell"
     weak var delegate: imagesListCellDelegate?
     
     @IBOutlet weak var previewImage: UIImageView!
     @IBOutlet weak var likeButton: UIButton!
     @IBOutlet weak var dateLabel: UILabel!
-    
     
     @IBAction func likeButton(_ sender: Any) {
         delegate?.imagesListCellDidTapLike(self)
@@ -24,15 +24,13 @@ final class ImagesListCell: UITableViewCell {
     override func prepareForReuse() {
         super.prepareForReuse()
         previewImage.kf.cancelDownloadTask()
-        
     }
-    
     
     func setLike(_ isLiked: Bool) {
         
-        let image = isLiked == true ? UIImage(named: "likeButton_isActive") :
-        UIImage(named: "likeButton_isNotActive")
-        
+        let image = isLiked ? UIImage(named: "likeButton_isActive") :
+            UIImage(named: "likeButton_isNotActive")
+
         likeButton.setImage(image, for: .normal)
     }    
 }

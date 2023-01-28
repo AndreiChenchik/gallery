@@ -23,13 +23,11 @@ final class ImageListService {
     
     private var lastLoadedPage: Int?
     
-    private let dateFormatter: DateFormatter = {
-        let formatter = DateFormatter()
-        formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
-        
+    private let dateFormatter: ISO8601DateFormatter = {
+        let formatter = ISO8601DateFormatter()
         return formatter
     }()
-    
+
     func prepareForDisplay(index: Int) {
         guard index == photos.count - 1, task == nil else {
             return
@@ -44,8 +42,15 @@ final class ImageListService {
     func fetchPhotosNextPage() {
         
         let token = tokenStorage.token
-        let nextPage = lastLoadedPage == nil ? 1 : lastLoadedPage! + 1
         
+        let nextPage: Int
+
+        if let lastLoadedPage {
+          nextPage = lastLoadedPage + 1
+        } else {
+           nextPage = 1
+        }
+
         guard let token = token else {
             print(TokenStorageError.tokenNotFound)
             return
@@ -64,6 +69,7 @@ final class ImageListService {
                     $0.convertToViewModel(formatter: self.dateFormatter)
                 }
                 print("Task succeeded")
+                print("PHOTO DATE: \(photos[1].createdAt)")
                 DispatchQueue.main.async { [weak self] in
                     guard let self else { return }
                     self.photos += photos
@@ -148,7 +154,7 @@ extension ImageListService {
 
 
 private extension PhotoResult {
-    func convertToViewModel(formatter: DateFormatter) -> Photo {
+    func convertToViewModel(formatter: ISO8601DateFormatter) -> Photo {
         Photo(
             id: self.id,
             description: self.description,
@@ -163,5 +169,3 @@ private extension PhotoResult {
         )
     }
 }
-
-

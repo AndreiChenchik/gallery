@@ -9,6 +9,13 @@ final class AlertService {
         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { _ in handler() }))
         vc.present(alert, animated: true)
     }
+    
+    func showLogoutAlert(on vc: UIViewController, handler: @escaping () -> Void) {
+        let alert = UIAlertController(title: "Пока, пока!", message: "Уверены, что хотите выйти?", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Нет", style: .cancel))
+        alert.addAction(UIAlertAction(title: "Да", style: .default, handler: { _ in handler() }))
+        vc.present(alert, animated: true)
+    }
 
 }
 

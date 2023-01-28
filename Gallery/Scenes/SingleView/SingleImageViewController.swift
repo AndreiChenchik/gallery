@@ -8,7 +8,7 @@ class SingleImageViewController: UIViewController {
             displayImage()
         }
     }
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         applySettings()
@@ -26,17 +26,16 @@ class SingleImageViewController: UIViewController {
         
         imageView.kf.setImage(with: image, placeholder: placeholder) { result in
             
-            UIBlockingProgressHUD.dismiss()
-            
-            switch result {
-            case.success(let data):
-                DispatchQueue.main.async { [weak self] in
-                    self?.rescaleAndCenterImageInScrollView(image: data.image)
-                }
-            case.failure(let error):
-                DispatchQueue.main.async { [weak self] in
-                    guard let self else { return }
+            DispatchQueue.main.async { [weak self] in
+                guard let self else { return }
+                
+                UIBlockingProgressHUD.dismiss()
+                
+                switch result {
+                case.success(let data):
+                    self.rescaleAndCenterImageInScrollView(image: data.image)
                     
+                case.failure(let error):
                     AlertService().showErrorAlert(on: self, error: error) {
                         self.dismiss(animated: true)
                     }

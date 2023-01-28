@@ -3,8 +3,8 @@ import Kingfisher
 
 class ImagesListViewController: UIViewController {
     
-    @IBOutlet private var tableView: UITableView!
     
+    @IBOutlet private var tableView: UITableView!
     
     private let ShowSingleImageSegueID = "ShowSingleImage"
     private let notificationCenter: NotificationCenter = .default
@@ -27,8 +27,6 @@ class ImagesListViewController: UIViewController {
         tableView.dataSource = self
         
         imagesListService.fetchPhotosNextPage()
-        
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -42,11 +40,9 @@ class ImagesListViewController: UIViewController {
     }
     
     
-    
     // When user tap on the cell
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
         
         guard
             segue.identifier == ShowSingleImageSegueID,
@@ -66,13 +62,10 @@ class ImagesListViewController: UIViewController {
 // MARK: - UITableViewDelegate
 
 extension ImagesListViewController: UITableViewDelegate {
-    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
         performSegue(withIdentifier: ShowSingleImageSegueID, sender: indexPath)
     }
 }
-
 
 
 // MARK: - UITableViewDataSource
@@ -188,11 +181,8 @@ extension ImagesListViewController {
             tableView.performBatchUpdates {
                 tableView.insertRows(at: newIndexPath, with: .automatic)
             }
-            
         }
-        
     }
-    
 }
 
 

@@ -27,6 +27,7 @@
 		8D43F50728FB946900A88BCE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8D43F50528FB946900A88BCE /* LaunchScreen.storyboard */; };
 		8D5997082918AF21000D87A6 /* ImagesListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D5997072918AF21000D87A6 /* ImagesListCell.swift */; };
 		8D638379297BBF2A0004BEB3 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D638378297BBF2A0004BEB3 /* TabBarController.swift */; };
+		8D6474132984C4700012E6B4 /* CookieCleanerService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D6474122984C4700012E6B4 /* CookieCleanerService.swift */; };
 		8D6474112984302A0012E6B4 /* WebViewPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D6474102984302A0012E6B4 /* WebViewPresenter.swift */; };
 		8D6474152984F0E60012E6B4 /* AuthConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D6474142984F0E60012E6B4 /* AuthConfiguration.swift */; };
 		8D6474172984F2BA0012E6B4 /* AuthHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D6474162984F2BA0012E6B4 /* AuthHelper.swift */; };
@@ -79,6 +80,7 @@
 		8D43F50828FB946900A88BCE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8D5997072918AF21000D87A6 /* ImagesListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagesListCell.swift; sourceTree = "<group>"; };
 		8D638378297BBF2A0004BEB3 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
+		8D6474122984C4700012E6B4 /* CookieCleanerService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CookieCleanerService.swift; sourceTree = "<group>"; };
 		8D6474102984302A0012E6B4 /* WebViewPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewPresenter.swift; sourceTree = "<group>"; };
 		8D6474142984F0E60012E6B4 /* AuthConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthConfiguration.swift; sourceTree = "<group>"; };
 		8D6474162984F2BA0012E6B4 /* AuthHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthHelper.swift; sourceTree = "<group>"; };
@@ -257,6 +259,7 @@
 				8D3C75F42970123500AB4699 /* ProfileService.swift */,
 				8DED8CC7297540FA000C2945 /* ProfileImageService.swift */,
 				8D27B3AE2980D5CB00136E07 /* ImageListService.swift */,
+				8D6474122984C4700012E6B4 /* CookieCleanerService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -403,6 +406,7 @@
 				8D6474172984F2BA0012E6B4 /* AuthHelper.swift in Sources */,
 				8D3C75F72970128C00AB4699 /* ProfileResult.swift in Sources */,
 				8DED8CCC2976902C000C2945 /* NetworkClient.swift in Sources */,
+				8D6474132984C4700012E6B4 /* CookieCleanerService.swift in Sources */,
 				8DD32370297C29470046C155 /* Colors.swift in Sources */,
 				8D638379297BBF2A0004BEB3 /* TabBarController.swift in Sources */,
 				8DED8CCA29754151000C2945 /* UserResult.swift in Sources */,

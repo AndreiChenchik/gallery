@@ -2,6 +2,7 @@ import UIKit
 import Kingfisher
 import WebKit
 
+
 final class ProfileViewController: UIViewController {
     
     
@@ -15,37 +16,40 @@ final class ProfileViewController: UIViewController {
     
     private var profileImageServiceObserver: NSObjectProtocol?
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
         updateProfile()
         addObserverForNotifications()
         updateAvatar()
-        
     }
     
     
-    @objc func logoutButtonTapped() {
+    @objc private func logoutButtonTapped() {
         
-        var tokenStorage = OAuth2TokenStorage()
-        OAuth2TokenStorage.clean()
-        tokenStorage.token = nil
-        
-        let startViewController = SplashViewController()
-        
-        guard let window = UIApplication.shared.windows.first else {
-            assertionFailure("can't find app")
-            return
+        let alert = AlertService()
+        alert.showLogoutAlert(on: self) {
+            
+            var tokenStorage = OAuth2TokenStorage()
+            CookieCleanerService.clean()
+            tokenStorage.token = nil
+            
+            let startViewController = SplashViewController()
+            
+            guard let window = UIApplication.shared.windows.first else {
+                assertionFailure("can't find app")
+                return
+            }
+            window.rootViewController = startViewController
         }
-        window.rootViewController = startViewController
     }
-    
 }
 
 
 // MARK: - UI
 
-extension ProfileViewController {
+private extension ProfileViewController {
     
     func setupUI() {
         
@@ -72,7 +76,6 @@ extension ProfileViewController {
             
             avatar.translatesAutoresizingMaskIntoConstraints = false
             view.addSubview(avatar)
-            
         }
         
         
@@ -85,7 +88,7 @@ extension ProfileViewController {
             
             nameLabel.translatesAutoresizingMaskIntoConstraints = false
             view.addSubview(nameLabel)
-            
+    
         }
         
         
@@ -126,8 +129,6 @@ extension ProfileViewController {
             view.addSubview(logoutButton)
             
             logoutButton.addTarget(self, action: #selector(logoutButtonTapped), for: .touchUpInside)
-            
-            
         }
         
         
@@ -156,8 +157,6 @@ extension ProfileViewController {
             /// Logout Button
             logoutButton.trailingAnchor.constraint(equalTo: view.layoutMarginsGuide.trailingAnchor, constant: -8).isActive = true
             logoutButton.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 55).isActive = true
-            
-            
         }
     }
 }
@@ -178,9 +177,7 @@ extension ProfileViewController {
                 self.updateAvatar()
             }
         )
-        
     }
-    
 }
 
 // MARK: - UI updates section
@@ -224,10 +221,7 @@ extension ProfileViewController {
             self.avatar.kf.indicatorType = .activity
             self.avatar.kf.setImage(with: url, placeholder: UIImage(named: "placeholder.svg"))
         }
-        
     }
-    
-    
 }
 
 
