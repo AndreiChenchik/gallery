@@ -229,7 +229,7 @@
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="layer.maskBounds" value="YES"/>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <segue destination="Glh-Dx-D6M" kind="presentation" identifier="ShowWebView" modalPresentationStyle="fullScreen" id="zoN-ed-3AI"/>
+                                    <segue destination="Glh-Dx-D6M" kind="presentation" identifier="AuthVCToWebVC" modalPresentationStyle="fullScreen" id="zoN-ed-3AI"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -271,7 +271,7 @@
         <!--Web View View Controller-->
         <scene sceneID="eQC-sT-CWm">
             <objects>
-                <viewController id="Glh-Dx-D6M" customClass="WebViewViewController" customModule="Gallery" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="WebViewVC" id="Glh-Dx-D6M" customClass="WebViewViewController" customModule="Gallery" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Pxg-a8-6xQ">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

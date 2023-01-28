@@ -7,20 +7,26 @@ protocol AuthViewControllerDelegate: AnyObject {
 
 final class AuthViewController: UIViewController {
     
-    private let showWebViewSegueID = "ShowWebView"
+    
+    private let segueID = "AuthVCToWebVC"
     weak var delegate: AuthViewControllerDelegate?
 
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
-        guard segue.identifier == showWebViewSegueID,
+        guard segue.identifier == segueID,
                 let webViewViewController = segue.destination as? WebViewViewController
-        else { return }
+        else { fatalError("Failed to prepare for \(segueID)") }
+        
+        let authHelper = AuthHelper()
+        let webViewPresenter = WebViewPresenter(authHelper: authHelper)
+        webViewViewController.presenter = webViewPresenter
+        webViewPresenter.view = webViewViewController
         
         webViewViewController.delegate = self
-    
     }
-
 }
+
 
 extension AuthViewController: WebViewViewControllerDelegate {
     
@@ -32,6 +38,5 @@ extension AuthViewController: WebViewViewControllerDelegate {
     func webViewViewControllerDidCancel(_ vc: WebViewViewController) {
         dismiss(animated: true)
     }
-    
 }
 
